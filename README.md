@@ -164,6 +164,30 @@ plt.show()
 
 * Clustered Areas: If you notice clusters of heatmap intensity, they represent hotspots. These might correspond to high-traffic areas like resorts, beaches, or urban centers. Spread-Out Listings: If the heatmap shows a more uniform distribution, it could suggest that listings are more evenly spread across the region, which may reflect a more balanced demand for rentals across different areas of Tokyo.
 
+```
+import folium
+from folium.plugins import HeatMap
+import pandas as pd
+
+
+Tokyo_data = listings[['latitude', 'longitude', 'price']]  # Example, you may add more columns
+
+# Create a base map centered around Hawaii
+m = folium.Map(location=[35.68598015370972, 139.77037960835457], zoom_start=10)
+
+# Prepare the data for the heatmap
+heat_data = [[row['latitude'], row['longitude']] for index, row in Tokyo_data.iterrows()]
+
+# Add the heatmap to the map
+HeatMap(heat_data).add_to(m)
+
+# Save the map as an HTML file to view in a browser
+m.save('Tokyo_heatmap.html')
+
+# If you're using Jupyter Notebook, you can display the map directly in the notebook:
+m
+```
+
 <img src="https://github.com/user-attachments/assets/b0301a59-ce84-4eda-a15f-c0f3be96b153" alt="Value Counts Output" width="600"/>
 
 
