@@ -78,7 +78,7 @@ listings.columns
 ```
 <img src="https://github.com/user-attachments/assets/a8ab2248-e73c-483e-ad9e-688118916c6c" alt="Value Counts Output" width="600"/>
 
-# ✅ Tokyo type and price is given seperately
+## ✅ Tokyo type and price is given seperately
 ```
 import matplotlib.pyplot as plt
 price_by_room = listings.groupby('room_type')['price'].mean()
@@ -94,5 +94,5 @@ plt.show()
 ```
 <img src="https://github.com/user-attachments/assets/edb6780e-1048-428e-832a-8e2f7f4864b3" alt="Value Counts Output" width="600"/>
 
-# ✅ Which are the top 10 neighborhoods with the most listings?
+## ✅ Which are the top 10 neighborhoods with the most listings?
 
