@@ -95,4 +95,75 @@ plt.show()
 <img src="https://github.com/user-attachments/assets/edb6780e-1048-428e-832a-8e2f7f4864b3" alt="Value Counts Output" width="600"/>
 
 ## ✅ Which are the top 10 neighborhoods with the most listings?
+```
+neighborhood_counts = listings['neighbourhood'].value_counts().head(10)
+print("Top 10 Neighborhoods by Listings:")
+print(neighborhood_counts)
+
+# Plot neighborhoods with most listings
+neighborhood_counts.plot(kind='bar', color='lightcoral')
+plt.title('Top 10 Neighborhoods by Listings')
+plt.ylabel('Number of Listings')
+plt.xlabel('Neighborhood')
+plt.xticks(rotation=90)
+plt.show()
+```
+<img src="https://github.com/user-attachments/assets/34664f07-1459-495e-bc01-a35b29db99c6" alt="Value Counts Output" width="600"/>
+
+## ✅ Geographical Distribution of Listings (Price Colored)
+
+```
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+```
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=listings, x='longitude', y='latitude', hue='price', palette='viridis', size='price', sizes=(10, 200))
+plt.title('Geographical Distribution of Listings (Price Colored)')
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.show()
+```
+<img src="https://github.com/user-attachments/assets/354054b1-4ddc-4269-81f9-38d9838dda27" alt="Value Counts Output" width="600"/>
+
+## What is the most expensive neighborhood in Tokyo
+```
+most_expensive_neighborhoods = listings.groupby('neighbourhood')['price'].mean().sort_values(ascending=False).head(10)
+print("Most Expensive Neighborhoods:")
+print(most_expensive_neighborhoods)
+
+# Plot the most expensive neighborhoods
+most_expensive_neighborhoods.plot(kind='bar', color='gold')
+plt.title('Top 10 Most Expensive Neighborhoods')
+plt.ylabel('Average Price')
+plt.xlabel('Neighborhood')
+plt.xticks(rotation=90)
+plt.show()
+```
+<img src="https://github.com/user-attachments/assets/a0559f36-0650-45f9-967c-f90168e79576" alt="Value Counts Output" width="600"/>
+
+## What is the distribution of room types across Tokyo
+```
+# Count the number of each room type
+room_type_counts = listings['room_type'].value_counts()
+print("Room Type Distribution:")
+print(room_type_counts)
+
+# Plot room type distribution as a pie chart
+room_type_counts.plot(kind='pie', autopct='%1.1f%%', startangle=90, figsize=(8, 8), colors=['skyblue', 'lightgreen', 'orange', 'pink'])
+plt.title('Distribution of Room Types in Tokyo')
+plt.ylabel('')  # Hides the y-label
+plt.show()
+```
+<img src="https://github.com/user-attachments/assets/56043893-5018-4404-8eb5-1aea5f283000" alt="Value Counts Output" width="600"/>
+
+## Let us see the listings on a real map
+* Hotter Areas (Red/Yellow): High Density: The areas that appear in red or yellow (the "hot" colors) indicate higher density or concentration of listings. This means there are more listings in these areas. Popular Locations: These regions might be more popular or in high demand. It could be near tourist attractions, popular neighborhoods, or central areas in Hawaii where people tend to stay more often. Colder Areas (Green/Blue):
+
+* Low Density: Areas with blue or green (the "cold" colors) indicate a lower concentration of listings. These regions have fewer listings available. Less Popular Locations: These areas might be less popular or further from key attractions. If you're looking at pricing or other factors, lower density could imply less competition in these regions, which might indicate more affordable areas or less tourist traffic. Density Patterns:
+
+* Clustered Areas: If you notice clusters of heatmap intensity, they represent hotspots. These might correspond to high-traffic areas like resorts, beaches, or urban centers. Spread-Out Listings: If the heatmap shows a more uniform distribution, it could suggest that listings are more evenly spread across the region, which may reflect a more balanced demand for rentals across different areas of Hawaii.
+
+<img src="https://github.com/user-attachments/assets/b0301a59-ce84-4eda-a15f-c0f3be96b153" alt="Value Counts Output" width="600"/>
+
 
